@@ -1,0 +1,14 @@
+{
+    "/api": {
+      "target": "https://www.google.com.eg/?gws_rd=ssl",
+      "changeOrigin":true,
+      "logLevel":"debug",
+      "pathRewrite": {
+        "^/api": ""
+      }
+    },
+    "/ex":{
+      "target":"http://localhost:4200/api",
+      "secure":false
+    }
+  }

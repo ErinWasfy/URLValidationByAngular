@@ -1,0 +1,24 @@
+
+<div class="container">
+  <h2>Url Pattern Validation</h2><br/><br/>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="form-control">
+       <div class="col">
+        <label type="label">Enter Url:</label></div>
+        <div class="row-cols-1" >
+          
+        <input type="text" [ngClass]="{'is-danger': hasError('url', 'any')}" formControlName="url"  placeholder="Specify URL"
+        class="text-primary" ></div>
+        <div class="alert alert-danger" *ngIf="hasError('url', 'required')">Required!</div>
+          <!-- <div *ngIf="myForm.controls['url'].errors?.validURL" class="alert alert-danger">Valid Url</div> -->
+          <div *ngIf="myForm.controls['url'].touched && !myForm.controls['url'].errors?.validURL && !hasError('url', 'required')" class="alert alert-danger">
+              Invalid.Please specify a correct url</div>
+            
+            <div class="row-cols-5">
+              <button [disabled]="!myForm.controls['url'].errors?.validURL" type="submit" (onClick)="redirectToValidLink()">Check</button>
+              <div *ngIf="myForm.controls['url'].errors?.validURL && url!=''">
+                <a href="{{url}}" target="_blank">Please follow this link</a>
+              </div>
+            </div>
+        
+    </form>
+    </div>
